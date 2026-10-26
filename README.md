@@ -1,59 +1,76 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Inventory Sales - Aplikasi Inventaris & Penjualan
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Inventory Sales adalah aplikasi manajemen inventaris barang dan transaksi penjualan/pembelian berbasis web yang dibuat menggunakan Laravel Breeze dan Tailwind CSS.
 
-## About Laravel
+## Fitur Utama
+- **Dashboard Statistics:** Ringkasan total produk, kategori, supplier, transaksi, serta peringatan stok rendah.
+- **Manajemen Master Data:** CRUD Kategori, Supplier, dan Produk.
+- **Transaksi Penjualan & Pembelian:** Pencatatan riwayat transaksi beserta detail item.
+- **Laporan Penjualan:** Filter laporan berdasarkan rentang tanggal dan pencarian nomor invoice.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Tech Stack
+- **Framework:** Laravel 11
+- **Authentication:** Laravel Breeze
+- **Database:** MySQL
+- **Frontend Styling:** Tailwind CSS
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Cara Instalasi Lokal
+1. Clone repository ini:
+   ```bash
+   git clone [https://github.com/username-kamu/inventory-sales.git](https://github.com/username-kamu/inventory-sales.git)
+   cd inventory-sales
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+2. Install dependensi:
+   Bash
+   composer install
+   npm install && npm run build
 
-## Learning Laravel
+3. Salin .env.example menjadi .env dan sesuaikan konfigurasi database:
+   Bash
+   cp .env.example .env
+   php artisan key:generate
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+4. Jalankan migrasi database:
+   Bash
+   php artisan migrate
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+5. Jalankan server lokal:
+   Bash
+   php artisan serve
 
-## Laravel Sponsors
+6. Simpan filenya (**`Ctrl + S`**).
+7. Setelah itu, kamu bisa lanjut jalankan perintah `git add .` di terminal untuk di-*push* ke GitHub!
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+<ElicitationsGroup>
+<Elicitation>
+<Question>Butuh panduan perintah Git selanjutnya untuk push ke GitHub?</Question>
+<Options>
+<Option text="Ya, minta urutan perintah Git-nya"/>
+<Option text="Sudah paham, terima kasih!"/>
+</Options>
+</Elicitation>
+</ElicitationsGroup>
 
-### Premium Partners
+## Akun Pengujian (Login Credentials)
+Untuk mencoba fitur aplikasi, kamu bisa masuk menggunakan akun default berikut atau mendaftar akun baru melalui menu **Register**:
+- **Email:** admin@gmail.com
+- **Password:** password123
+  
+## Langkah-Langkah Login ke Aplikasi
+1. Jalankan server Laravel (`php artisan serve`) dan asset builder (`npm run dev`).
+2. Buka browser dan kunjungi `http://127.0.0.1:8000`.
+3. Klik tombol **Log in** di pojok kanan atas halaman utama.
+4. Masukkan **Email** dan **Password** sesuai kredensial di atas.
+5. Klik tombol **Log in** untuk masuk ke halaman **Dashboard StockHub**.
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+tampilan aplikasi:
+<img width="959" height="476" alt="image" src="https://github.com/user-attachments/assets/7c2a581d-d2a5-4995-8cbe-d2cf3d8521a1" />
+<img width="959" height="441" alt="image" src="https://github.com/user-attachments/assets/e1fed154-d32a-4bc1-a2df-18a31704d382" />
 
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+<img width="959" height="476" alt="image" src="https://github.com/user-attachments/assets/32fb259a-0208-4b86-92b5-e795f3ef79b5" />
+<img width="959" height="441" alt="image" src="https://github.com/user-attachments/assets/c47e209e-51cf-4195-8d00-ead528f14c07" />
+<img width="959" height="442" alt="image" src="https://github.com/user-attachments/assets/ea18bbcd-f024-4234-94ea-2a8bca82e9c8" />
+<img width="959" height="441" alt="image" src="https://github.com/user-attachments/assets/670ebead-3c43-4d6d-8230-ffdf4517b2ba" />
+<img width="959" height="440" alt="image" src="https://github.com/user-attachments/assets/d2032b16-c915-4c1c-bf90-8a46856d32d7" />
+<img width="959" height="438" alt="image" src="https://github.com/user-attachments/assets/00b350a5-528a-47ba-af45-8e415e9e92fd" />
+<img width="959" height="446" alt="image" src="https://github.com/user-attachments/assets/2ff47a91-76ac-4dd9-8a91-f40725e79ecb" />
