@@ -1,72 +1,92 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard Inventaris') }}
+            {{ __('Dashboard') }}
         </h2>
     </x-slot>
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <!-- Ringkasan Stat Cards -->
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
-                <!-- Total Produk -->
-                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6 border-l-4 border-blue-500">
-                    <div class="text-gray-500 text-sm font-medium">Total Produk</div>
-                    <div class="text-3xl font-bold text-gray-800 mt-2">{{ $totalProducts }}</div>
+            
+            <!-- Ringkasan Statistik -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
+                <div style="background-color: white; padding: 1.5rem; border-radius: 0.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+                    <p style="font-size: 0.875rem; color: #6b7280; font-weight: 600;">Total Produk</p>
+                    <p style="font-size: 1.875rem; font-weight: 700; color: #1f2937;">{{ $totalProducts }}</p>
                 </div>
-
-                <!-- Total Kategori -->
-                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6 border-l-4 border-green-500">
-                    <div class="text-gray-500 text-sm font-medium">Total Kategori</div>
-                    <div class="text-3xl font-bold text-gray-800 mt-2">{{ $totalCategories }}</div>
+                <div style="background-color: white; padding: 1.5rem; border-radius: 0.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+                    <p style="font-size: 0.875rem; color: #6b7280; font-weight: 600;">Total Kategori</p>
+                    <p style="font-size: 1.875rem; font-weight: 700; color: #1f2937;">{{ $totalCategories }}</p>
                 </div>
-
-                <!-- Total Supplier -->
-                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6 border-l-4 border-yellow-500">
-                    <div class="text-gray-500 text-sm font-medium">Total Supplier</div>
-                    <div class="text-3xl font-bold text-gray-800 mt-2">{{ $totalSuppliers }}</div>
+                <div style="background-color: white; padding: 1.5rem; border-radius: 0.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+                    <p style="font-size: 0.875rem; color: #6b7280; font-weight: 600;">Total Supplier</p>
+                    <p style="font-size: 1.875rem; font-weight: 700; color: #1f2937;">{{ $totalSuppliers }}</p>
                 </div>
-
-                <!-- Total Stok Barang -->
-                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6 border-l-4 border-purple-500">
-                    <div class="text-gray-500 text-sm font-medium">Total Stok Barang</div>
-                    <div class="text-3xl font-bold text-gray-800 mt-2">{{ $totalStock }}</div>
+                <div style="background-color: white; padding: 1.5rem; border-radius: 0.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+                    <p style="font-size: 0.875rem; color: #6b7280; font-weight: 600;">Total Penjualan</p>
+                    <p style="font-size: 1.875rem; font-weight: 700; color: #2563eb;">{{ $totalSales }}</p>
+                </div>
+                <div style="background-color: white; padding: 1.5rem; border-radius: 0.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+                    <p style="font-size: 0.875rem; color: #6b7280; font-weight: 600;">Total Pembelian</p>
+                    <p style="font-size: 1.875rem; font-weight: 700; color: #059669;">{{ $totalPurchases }}</p>
                 </div>
             </div>
 
-            <!-- Tabel Transaksi Terakhir -->
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6">
-                <div class="flex justify-between items-center mb-4">
-                    <h3 class="text-lg font-bold text-gray-800">Transaksi Penjualan Terakhir</h3>
-                    <a href="{{ route('sales.create') }}" class="inline-flex items-center px-4 py-2 bg-blue-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-700 active:bg-blue-900 focus:outline-none focus:border-blue-900 focus:ring ring-blue-300 disabled:opacity-25 transition">
-                        + Transaksi Baru
-                    </a>
-                </div>
-                <div class="overflow-x-auto">
-                    <table class="min-w-full divide-y divide-gray-200">
-                        <thead class="bg-gray-50">
-                            <tr>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">No Invoice</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tanggal</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Total Transaksi</th>
+            <!-- Tabel Stok Rendah & Penjualan Terbaru -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+                
+                <!-- Stok Rendah -->
+                <div style="background-color: white; padding: 1.5rem; border-radius: 0.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+                    <h3 style="font-size: 1.125rem; font-weight: 700; margin-bottom: 1rem; color: #dc2626;">⚠️ Peringatan Stok Rendah (<= 5)</h3>
+                    <table style="width: 100%; border-collapse: collapse; text-align: left;">
+                        <thead>
+                            <tr style="border-bottom: 2px solid #e5e7eb; font-size: 0.75rem; color: #4b5563;">
+                                <th style="padding: 0.5rem 0;">PRODUK</th>
+                                <th style="padding: 0.5rem 0; text-align: right;">STOK</th>
                             </tr>
                         </thead>
-                        <tbody class="bg-white divide-y divide-gray-200">
-                            @forelse($recentSales as $sale)
-                                <tr>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-semibold text-gray-900">{{ $sale->sale_number }}</td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ $sale->created_at->format('d/m/Y H:i') }}</td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 font-bold">Rp {{ number_format($sale->total, 0, ',', '.') }}</td>
+                        <tbody>
+                            @forelse($lowStockProducts as $product)
+                                <tr style="border-bottom: 1px solid #f3f4f6; font-size: 0.875rem;">
+                                    <td style="padding: 0.5rem 0; font-weight: 600;">{{ $product->name }}</td>
+                                    <td style="padding: 0.5rem 0; text-align: right; color: #dc2626; font-weight: 700;">{{ $product->stock }}</td>
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="3" class="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500">Belum ada transaksi penjualan.</td>
+                                    <td colspan="2" style="padding: 1rem 0; text-align: center; color: #6b7280; font-size: 0.875rem;">Semua stok aman.</td>
                                 </tr>
                             @endforelse
                         </tbody>
                     </table>
                 </div>
+
+                <!-- Transaksi Terbaru -->
+                <div style="background-color: white; padding: 1.5rem; border-radius: 0.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+                    <h3 style="font-size: 1.125rem; font-weight: 700; margin-bottom: 1rem; color: #1f2937;">🛒 Penjualan Terbaru</h3>
+                    <table style="width: 100%; border-collapse: collapse; text-align: left;">
+                        <thead>
+                            <tr style="border-bottom: 2px solid #e5e7eb; font-size: 0.75rem; color: #4b5563;">
+                                <th style="padding: 0.5rem 0;">INVOICE</th>
+                                <th style="padding: 0.5rem 0; text-align: right;">TOTAL</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @forelse($recentSales as $sale)
+                                <tr style="border-bottom: 1px solid #f3f4f6; font-size: 0.875rem;">
+                                    <td style="padding: 0.5rem 0; font-weight: 600;">{{ $sale->sale_number }}</td>
+                                    <td style="padding: 0.5rem 0; text-align: right; font-weight: 700; color: #059669;">Rp {{ number_format($sale->total, 0, ',', '.') }}</td>
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td colspan="2" style="padding: 1rem 0; text-align: center; color: #6b7280; font-size: 0.875rem;">Belum ada penjualan.</td>
+                                </tr>
+                            @endforelse
+                        </tbody>
+                    </table>
+                </div>
+
             </div>
+
         </div>
     </div>
 </x-app-layout>

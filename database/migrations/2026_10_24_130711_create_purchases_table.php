@@ -13,6 +13,18 @@ return new class extends Migration
     {
         Schema::create('purchases', function (Blueprint $table) {
             $table->id();
+            $table->string('purchase_number')->unique();
+            $table->foreignId('supplier_id')->constrained()->onDelete('cascade');
+            $table->decimal('total_amount', 15, 2);
+            $table->timestamps();
+        });
+
+        Schema::create('purchase_items', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('purchase_id')->constrained()->onDelete('cascade');
+            $table->foreignId('product_id')->constrained()->onDelete('cascade');
+            $table->integer('quantity');
+            $table->decimal('price', 15, 2);
             $table->timestamps();
         });
     }
@@ -22,6 +34,7 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::dropIfExists('purchase_items');
         Schema::dropIfExists('purchases');
     }
 };
